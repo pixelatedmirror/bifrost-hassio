@@ -20,11 +20,9 @@ privileged:
 ## needed to access the mac address of the physical interface
 host_network: true
 
-## enabling this gives +2 bogus security points
-#ingress: true
-
-## might be useful when we have a web ui
-# panel_icon: lightbulb-group
+ingress: true
+ingress_port: 80
+panel_icon: mdi:lightbulb-group
 
 webui: http://[HOST]:[PORT:80]/frontend
 
