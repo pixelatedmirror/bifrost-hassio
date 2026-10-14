@@ -11,6 +11,35 @@ and see if that solves the problem.
 
 We hope you will like Bifrost!
 
+### 2026-09-29: `duvholt/fix/wake-up-delete-pending`
+
+Cancel pending wake up schedules when disabling/deleting the instance
+
+****************************************
+
+### 2026-09-26: `duvholt/test/behavior-instance`
+
+Basic integrations tests for wake-up behavior instance
+
+****************************************
+
+### 2026-09-26: `duvholt/feat/zone-room-rework`
+
+- Add CLIP v2 room and zone creation, updates, and deletion.
+  - Handle group changes like rename and deleting done directly in Zigbee2MQTT
+  - Support empty rooms and zones, creating backend groups when children are added.
+  - Expose zones through the legacy v1 groups API.
+  - Delete associated scenes when removing rooms or zones.
+  - Add integration tests for rooms and zones
+
+****************************************
+
+### 2026-09-26: `duvholt/fix/hue-lights-out-of-sync`
+
+Fix some issues with Hue lights state going out of sync. This could affect both Bifrost light state being out of sync, but also the z2m state itself if attributes were read too early.
+
+****************************************
+
 ### 2026-08-10: `duvholt/feat/integration-tests`
 
 - Simple zigbee2mqtt in memory emulator for development and integration testing

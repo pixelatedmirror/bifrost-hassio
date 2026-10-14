@@ -145,6 +145,35 @@ covered the cost of a Hue Sync Box!
 
 # Changelog (11 most recent changes)
 
+### 2026-09-29: `duvholt/fix/wake-up-delete-pending`
+
+Cancel pending wake up schedules when disabling/deleting the instance
+
+****************************************
+
+### 2026-09-26: `duvholt/test/behavior-instance`
+
+Basic integrations tests for wake-up behavior instance
+
+****************************************
+
+### 2026-09-26: `duvholt/feat/zone-room-rework`
+
+- Add CLIP v2 room and zone creation, updates, and deletion.
+  - Handle group changes like rename and deleting done directly in Zigbee2MQTT
+  - Support empty rooms and zones, creating backend groups when children are added.
+  - Expose zones through the legacy v1 groups API.
+  - Delete associated scenes when removing rooms or zones.
+  - Add integration tests for rooms and zones
+
+****************************************
+
+### 2026-09-26: `duvholt/fix/hue-lights-out-of-sync`
+
+Fix some issues with Hue lights state going out of sync. This could affect both Bifrost light state being out of sync, but also the z2m state itself if attributes were read too early.
+
+****************************************
+
 ### 2026-08-10: `duvholt/feat/integration-tests`
 
 - Simple zigbee2mqtt in memory emulator for development and integration testing
@@ -198,34 +227,6 @@ For now only these light switches are mapped out:
 Known limitations:
 - The current implementation has to be implemented custom for each light switch. The problem is that there is no universal action interface exposed from z2m so I haven't been able to do any generic button mapping.
 - It's not possible to configure a button for a subset of lights in a room or many rooms. That's because this is using zones which is currently not implemented in Bifrost.
-
-****************************************
-
-### 2026-05-14: `duvholt/chore/bridge-version-bump`
-
-Bumps Hue bridge default version to 1.77.0
-
-****************************************
-
-### 2026-05-14: `duvholt/feat/effects-state`
-
-`philips_raw` was introduced in zigbee2mqtt which reports the raw state for Philips Hue lights. 
-
-Since Bifrost already has support for decoding this format it was relatively straightforward to use this to update our internal light state instead of using attributes from zigbee2mqtt.
-
-The most noticeable change from this is that Philips Hue effects and gradient lights should now properly reflect their status in the app.
-
-****************************************
-
-### 2026-05-04: `duvholt/feat/dimming-delta`
-
-Implement the dimming_delta API for (grouped) lights. This allows us to dim up/down lights by a relative value.
-
-****************************************
-
-### 2026-05-04: `duvholt/feat/bridge-home-light-updates`
-
-Support bridge home light updates which fixes the global on/off button in the Hue app.
 
 ## Full changelog
 
