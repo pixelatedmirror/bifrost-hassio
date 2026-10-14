@@ -1,0 +1,67 @@
+configuration:
+  bridge:
+    name: "Bridge Settings"
+    description: "Emulated Philips Hue bridge network and identity settings"
+    fields:
+      name:
+        name: "Bridge Name"
+        description: "Name of the bridge shown in Philips Hue apps"
+      mac:
+        name: "MAC Address"
+        description: "Hardware MAC address for bridge identification (e.g. 00:11:22:33:44:55)"
+      ipaddress:
+        name: "IP Address"
+        description: "IP address of your Home Assistant host"
+      netmask:
+        name: "Subnet Mask"
+        description: "Network subnet mask (default: 255.255.255.0)"
+      gateway:
+        name: "Gateway"
+        description: "Network gateway / router IP"
+      timezone:
+        name: "Timezone"
+        description: "Timezone for bridge schedules (e.g. Europe/Copenhagen)"
+      bind_ipaddress:
+        name: "Bind IP Address"
+        description: "Optional local interface IP to bind to"
+      http_port:
+        name: "HTTP Port"
+        description: "Port for unencrypted Hue API and Web UI (default: 80)"
+      https_port:
+        name: "HTTPS Port"
+        description: "Port for TLS encrypted Hue API (default: 443)"
+      entm_port:
+        name: "Entertainment Port"
+        description: "UDP port for Hue Entertainment streaming (default: 2100)"
+  bifrost:
+    name: "Bifrost Settings"
+    description: "Internal storage and paths"
+    fields:
+      cert_file:
+        name: "Certificate File"
+        description: "Path to HTTPS certificate (generated automatically if missing)"
+      state_file:
+        name: "State File"
+        description: "Path to persist paired apps and virtual bridge state"
+      frontend_dir:
+        name: "Frontend Directory"
+        description: "Path to web UI assets (/app/frontend in container)"
+  z2m_servers:
+    name: "Zigbee2MQTT Servers"
+    description: "Zigbee2MQTT WebSocket server connections"
+    fields:
+      name:
+        name: "Server Name"
+        description: "Unique identifier for this server (e.g. server1)"
+      url:
+        name: "WebSocket URL"
+        description: "WebSocket URL to Zigbee2MQTT (e.g. ws://192.168.1.50:8080)"
+      group_prefix:
+        name: "Group Prefix"
+        description: "Optional prefix to filter imported groups"
+      disable_tls_verify:
+        name: "Disable TLS Verification"
+        description: "Disable TLS verification when using secure wss:// connections"
+      streaming_fps:
+        name: "Streaming FPS"
+        description: "Target streaming frame rate (1 to 60)"

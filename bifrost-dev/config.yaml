@@ -1,6 +1,6 @@
 # https://developers.home-assistant.io/docs/add-ons/configuration#add-on-config
 name: Bifrost Dev
-version: dev-2026-10-14
+version: dev-2026-10-14.1
 slug: bifrost-dev
 description: "Bifrost enables you to emulate a Philips Hue Bridge to control lights, groups and scenes from Zigbee2Mqtt."
 url: "https://github.com/duvholt/bifrost/tree/dev"
@@ -29,21 +29,43 @@ webui: http://[HOST]:[PORT:80]/frontend
 apparmor: false
 
 schema:
-  config: str?
+  bridge:
+    name: str
+    mac: str
+    ipaddress: str
+    netmask: "str?"
+    gateway: "str?"
+    timezone: "str?"
+    bind_ipaddress: "str?"
+    http_port: "port?"
+    https_port: "port?"
+    entm_port: "port?"
+  bifrost:
+    cert_file: "str?"
+    state_file: "str?"
+    frontend_dir: "str?"
+  z2m_servers:
+    - name: str
+      url: url
+      group_prefix: "str?"
+      disable_tls_verify: "bool?"
+      streaming_fps: "int(1,60)?"
 
 options:
-  config: |
-    bifrost:
-      cert_file: "cert.pem"
-
-    bridge:
-      name: Bifrost
-      mac: 00:11:22:33:44:55
-      ipaddress: 10.12.0.20
-      netmask: 255.255.255.0
-      gateway: 10.12.0.1
-      timezone: Europe/Copenhagen
-
-    z2m:
-      server1:
-        url: ws://10.0.0.100:8080
+  bridge:
+    name: "Bifrost"
+    mac: "00:11:22:33:44:55"
+    ipaddress: "10.12.0.20"
+    netmask: "255.255.255.0"
+    gateway: "10.12.0.1"
+    timezone: "Europe/Copenhagen"
+    http_port: 80
+    https_port: 443
+    entm_port: 2100
+  bifrost:
+    cert_file: "cert.pem"
+    state_file: "state.yaml"
+    frontend_dir: "/app/frontend"
+  z2m_servers:
+    - name: "server1"
+      url: "ws://10.0.0.100:8080"
