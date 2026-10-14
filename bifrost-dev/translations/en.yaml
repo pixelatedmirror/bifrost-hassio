@@ -55,7 +55,7 @@ configuration:
         description: "WebSocket URL to Zigbee2MQTT (e.g. ws://192.168.1.50:8080)"
       group_prefix:
         name: "Group Prefix"
-        description: "Optional prefix to filter imported groups"
+        description: "Optional prefix for Zigbee2MQTT groups to prevent naming collisions with devices (e.g. bifrost_)"
       disable_tls_verify:
         name: "Disable TLS Verification"
         description: "Disable TLS verification when using secure wss:// connections"
