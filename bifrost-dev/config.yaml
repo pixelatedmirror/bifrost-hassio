@@ -18,10 +18,8 @@ privileged:
   - NET_ADMIN
 
 ## needed to access the mac address of the physical interface
+
 host_network: true
-
-
-webui: http://[HOST]:[PORT:80]/frontend
 
 apparmor: false
 
@@ -40,7 +38,6 @@ schema:
   bifrost:
     cert_file: "str?"
     state_file: "str?"
-    frontend_dir: "str?"
   z2m_servers:
     - name: str
       url: url
@@ -62,7 +59,6 @@ options:
   bifrost:
     cert_file: "cert.pem"
     state_file: "state.yaml"
-    frontend_dir: "/app/frontend"
   z2m_servers:
     - name: "server1"
       url: "ws://10.0.0.100:8080"

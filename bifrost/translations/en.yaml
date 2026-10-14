@@ -43,9 +43,6 @@ configuration:
       state_file:
         name: "State File"
         description: "Path to persist paired apps and virtual bridge state"
-      frontend_dir:
-        name: "Frontend Directory"
-        description: "Path to web UI assets (/app/frontend in container)"
   z2m_servers:
     name: "Zigbee2MQTT Servers"
     description: "Zigbee2MQTT WebSocket server connections"
