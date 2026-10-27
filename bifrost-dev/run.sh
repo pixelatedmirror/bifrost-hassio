@@ -10,6 +10,18 @@ if [ -f "$CONFIG_DIR/config.yaml" ]; then
 fi
 
 if [ -f "/data/options.json" ]; then
+    LOG_LEVEL=$(jq -r '.log_level // empty' /data/options.json)
+    if [ -n "$LOG_LEVEL" ] && [ "$LOG_LEVEL" != "null" ]; then
+        case "$LOG_LEVEL" in
+            warning) RUST_LEVEL="warn" ;;
+            notice)  RUST_LEVEL="info" ;;
+            fatal)   RUST_LEVEL="error" ;;
+            *)       RUST_LEVEL="$LOG_LEVEL" ;;
+        esac
+        export RUST_LOG="$RUST_LEVEL,mdns_sd=off,tokio_ssdp=info,tower_http::trace::on_request=info,h2=info,axum::rejection=trace"
+        echo "[run.sh] Setting log level to $RUST_LEVEL"
+    fi
+
     USER_CONFIG=$(jq -r '.config // empty' /data/options.json)
     if [ -n "$USER_CONFIG" ] && [ "$USER_CONFIG" != "null" ]; then
         echo "$USER_CONFIG" > "$CONFIG_DIR/config.yaml"

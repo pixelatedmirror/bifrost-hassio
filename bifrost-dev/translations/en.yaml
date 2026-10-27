@@ -1,4 +1,7 @@
 configuration:
+  log_level:
+    name: "Log Level"
+    description: "Controls the logging verbosity level of Bifrost."
   bridge:
     name: "Bridge Settings"
     description: "Emulated Philips Hue bridge network and identity settings"
@@ -62,3 +65,6 @@ configuration:
       streaming_fps:
         name: "Streaming FPS"
         description: "Target streaming frame rate (1 to 60)"
+      rate_limit_ms:
+        name: "Rate Limit (ms)"
+        description: "Minimum interval in milliseconds between updates sent to Zigbee2MQTT for a light or group (default: 100)"

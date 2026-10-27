@@ -1,6 +1,6 @@
 # https://developers.home-assistant.io/docs/add-ons/configuration#add-on-config
 name: Bifrost
-version: master-2026-10-25.4
+version: master-2026-10-26.6
 slug: bifrost
 description: "Bifrost enables you to emulate a Philips Hue Bridge to control lights, groups and scenes from Zigbee2Mqtt."
 url: "https://github.com/duvholt/bifrost"
@@ -23,6 +23,7 @@ host_network: true
 apparmor: false
 
 schema:
+  log_level: "list(trace|debug|info|notice|warning|error|fatal)?"
   bridge:
     name: str
     mac: str
@@ -43,8 +44,10 @@ schema:
       group_prefix: "str?"
       disable_tls_verify: "bool?"
       streaming_fps: "int(1,60)?"
+      rate_limit_ms: "int(0,5000)?"
 
 options:
+  log_level: "info"
   bridge:
     name: "Bifrost"
     mac: "00:11:22:33:44:55"
